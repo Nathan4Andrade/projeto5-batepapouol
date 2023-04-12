@@ -28,6 +28,9 @@ header ion-icon {
   height: 100vh;
 }
  */
+main {
+  background-color: #f3f3f3;
+}
 
 .messages-container {
   width: 100%;
