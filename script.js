@@ -22,12 +22,25 @@ document
 // logar usuário FUNCIONA
 function usernameLogin() {
   username.name = prompt("Qual seu username?");
-  const promise = axios.post(
-    "https://mock-api.driven.com.br/api/vm/uol/participants",
-    username
+
+  const promiseGet = axios.get(
+    "https://mock-api.driven.com.br/api/vm/uol/participants"
   );
-  promise.then(online);
-  promise.catch(errorUsername);
+  promiseGet.then(function (response) {
+    const participants = response.data;
+    console.log(participants);
+    if (participants.find((users) => users.name === username.name)) {
+      alert("Este nome de usuário já está em uso.");
+      window.location.reload();
+    }
+    const promise = axios.post(
+      "https://mock-api.driven.com.br/api/vm/uol/participants",
+      username
+    );
+    promise.then(online);
+    promise.catch(errorUsername);
+  });
+  promiseGet.catch(errorConnection);
 }
 
 // usuário online
@@ -41,10 +54,10 @@ function online() {
 // tratar erro do usuário
 function errorUsername(error) {
   console.log(error.response);
-  if (error.response.status === 400) {
+  /*   if (error.response.status === 400) {
     alert(`Usuário em uso, por favor escolha outro`);
     window.location.reload();
-  }
+  } */
   if (error.response.status === 404) {
     alert(`Erro 404 - Not Found`);
     window.location.reload();
