@@ -36,8 +36,6 @@ function online() {
   sendStatus();
   setInterval(sendStatus, 5000);
   searchMessages();
-  let messagesContainer = document.querySelector(".messages-container");
-  messagesContainer.lastChild.scrollIntoView();
   setInterval(searchMessages, 3000);
 }
 
@@ -123,6 +121,7 @@ function displayMessage(response) {
       </div>`;
     }
   }
+  messagesContainer.lastChild.scrollIntoView();
 }
 
 //envia mesagem FUNCIONAAAAAAAAAAAAAAAAAAAAAAAAAAAA
