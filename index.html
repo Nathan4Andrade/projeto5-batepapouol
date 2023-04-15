@@ -23,57 +23,21 @@
       <ion-icon data-test="open-participants" name="people"></ion-icon>
     </header>
     <main>
-      <div class="messages-container">
-        <div class="status-message">
-          <p>
-            <span class="time">(10:39:09)</span>
-            <strong class="name">João</strong>
-            <span class="text">entra na sala...</span>
-          </p>
-        </div>
-        <div class="public-message">
-          <p>
-            <span class="time">(10:20:09)</span>
-            <strong class="name">João</strong>
-            <span class="text">para</span>
-            <span class="name">Todos:</span>
-            <span class="text">Bom dia!</span>
-          </p>
-        </div>
-        <div class="public-message">
-          <p>
-            <span class="time">(10:20:09)</span>
-            <strong class="name">Maria</strong>
-            <span class="text">para</span>
-            <span class="name">João:</span>
-            <span class="text">Oi João :)</span>
-          </p>
-        </div>
-        <div class="private-message">
-          <p>
-            <span class="time">(10:20:09)</span>
-            <strong class="name">João</strong>
-            <span class="text">reservadamente para</span>
-            <span class="name">Maria</span>
-            <span class="text">Oi gatinha quer tc?</span>
-          </p>
-        </div>
-        <div class="status-message">
-          <p>
-            <span class="time">(10:39:09)</span>
-            <strong class="name">Maria</strong>
-            <span class="text">sai da sala...</span>
-          </p>
-        </div>
-      </div>
+      <div class="messages-container"></div>
     </main>
     <footer>
-      <input type="text" class="input-text" placeholder="Escreva aqui..." />
+      <input
+        type="text"
+        data-test="input-message"
+        class="input-message"
+        placeholder="Escreva aqui..." />
       <ion-icon
         data-test="send-message"
         id="submit"
         name="paper-plane-outline"
-        onclick="sendMessage()"></ion-icon>
+        data-test="send-message"
+        onclick="sendMessage()"
+        onkeydown="sendMessage()"></ion-icon>
     </footer>
     <script
       type="module"
