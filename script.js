@@ -8,11 +8,10 @@ let username = {
 };
 let loginPage = "";
 
-username.name = prompt("Qual seu username?");
-
 usernameLogin();
 searchMessages();
 
+//fazer o enter funcionar
 document
   .querySelector(".input-message")
   .addEventListener("keypress", function (e) {
@@ -21,7 +20,9 @@ document
     }
   });
 
+// logar usuário FUNCIONA
 function usernameLogin() {
+  username.name = prompt("Qual seu username?");
   const promise = axios.post(
     "https://mock-api.driven.com.br/api/vm/uol/participants",
     username
@@ -30,28 +31,30 @@ function usernameLogin() {
   promise.catch(errorUsername);
 }
 
+// usuário online
 function online() {
   sendStatus();
   setInterval(sendStatus, 5000);
-
   searchMessages();
+  let messagesContainer = document.querySelector(".messages-container");
+  messagesContainer.lastChild.scrollIntoView();
   setInterval(searchMessages, 3000);
 }
 
+// tratar erro do usuário
 function errorUsername(error) {
   console.log(error.response);
   if (error.response.status === 400) {
-    alert(`🥴 OPS...
-Digite outro nome, pois este já está em uso!`);
+    alert(`Usuário em uso, por favor escolha outro`);
     window.location.reload();
   }
   if (error.response.status === 404) {
-    alert(`🥴 Erro 404 Not Found...
-  Tente novamente mais tarde!`);
+    alert(`Erro 404 - Not Found`);
     window.location.reload();
   }
 }
 
+// envia o status entrar e sair da sala
 function sendStatus() {
   const promisePOST = axios.post(
     "https://mock-api.driven.com.br/api/vm/uol/status",
@@ -62,7 +65,7 @@ function sendStatus() {
 }
 
 function connectedUser() {
-  console.log("Usuário Conectado!");
+  console.log("Usuário conectado!");
 }
 
 function errorConnection() {
@@ -70,7 +73,7 @@ function errorConnection() {
   window.location.reload();
 }
 
-// buscar mensagens FUNCIONA
+// buscar mensagens FUNCIONAAAAAAAA
 function searchMessages() {
   const promise = axios.get(
     "https://mock-api.driven.com.br/api/vm/uol/messages"
@@ -120,7 +123,6 @@ function displayMessage(response) {
       </div>`;
     }
   }
-  messagesContainer.lastChild.scrollIntoView();
 }
 
 //envia mesagem FUNCIONAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -144,11 +146,12 @@ function sendMessage() {
   );
   console.log(promise);
   promise.then(searchMessages);
-  promise.catch(() => /* window.location.reload() */ console.log("ERRO 400"));
+  promise.catch(() => window.location.reload());
 }
 
-function EnterTab(InputId, Evento) {
+/* function EnterTab(InputId, Evento) {
   if (Evento.keyCode == 13) {
     document.getElementById(InputId).focus();
   }
 }
+ */
