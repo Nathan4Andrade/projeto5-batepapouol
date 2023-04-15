@@ -128,7 +128,6 @@ function displayMessage(response) {
 //envia mesagem FUNCIONAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 function sendMessage() {
   const inputMessage = document.querySelector(".input-message").value;
-  console.log(inputMessage);
   document.querySelector(".input-message").value = "";
   if (inputMessage == "") {
     return inputMessage;
@@ -139,12 +138,10 @@ function sendMessage() {
     text: inputMessage,
     type: "message",
   };
-  console.log(newMessage);
   const promise = axios.post(
     "https://mock-api.driven.com.br/api/vm/uol/messages",
     newMessage
   );
-  console.log(promise);
   promise.then(searchMessages);
   promise.catch(() => window.location.reload());
 }
