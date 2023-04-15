@@ -13,6 +13,14 @@ username.name = prompt("Qual seu username?");
 usernameLogin();
 searchMessages();
 
+document
+  .querySelector(".input-message")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  });
+
 function usernameLogin() {
   const promise = axios.post(
     "https://mock-api.driven.com.br/api/vm/uol/participants",
