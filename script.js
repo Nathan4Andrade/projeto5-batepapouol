@@ -8,7 +8,6 @@ let username = {
 };
 
 usernameLogin();
-searchMessages();
 
 //fazer o enter funcionar
 document
@@ -45,6 +44,7 @@ function usernameLogin() {
 
 // usuário online
 function online() {
+  searchMessages();
   sendStatus();
   setInterval(sendStatus, 5000);
   searchMessages();
