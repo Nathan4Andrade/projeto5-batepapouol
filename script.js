@@ -6,7 +6,6 @@ let message = [];
 let username = {
   name: "",
 };
-let loginPage = "";
 
 usernameLogin();
 searchMessages();
@@ -78,7 +77,7 @@ function searchMessages() {
   );
 
   promise.then(displayMessage);
-  promise.catch(() => window.location.reload());
+  promise.catch(errorConnection);
 }
 
 //renderizar mensagens FUNCIONAAAAAAAAAA
@@ -142,5 +141,5 @@ function sendMessage() {
     newMessage
   );
   promise.then(searchMessages);
-  promise.catch(() => window.location.reload());
+  promise.catch(errorConnection);
 }
