@@ -144,10 +144,3 @@ function sendMessage() {
   promise.then(searchMessages);
   promise.catch(() => window.location.reload());
 }
-
-/* function EnterTab(InputId, Evento) {
-  if (Evento.keyCode == 13) {
-    document.getElementById(InputId).focus();
-  }
-}
- */
