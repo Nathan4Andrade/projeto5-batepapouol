@@ -44,8 +44,8 @@ function usernameLogin() {
 
 // usuário online
 function online() {
-  searchMessages();
   sendStatus();
+
   setInterval(sendStatus, 5000);
   searchMessages();
   setInterval(searchMessages, 3000);
